@@ -25,8 +25,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import javax.inject.Inject;
-
 import me.egorand.daggeroverrides.DaggerOverridesApp;
 import me.egorand.daggeroverrides.R;
 import me.egorand.daggeroverrides.model.GreetingGenerator;
@@ -45,11 +43,11 @@ public class GreetingTest {
 
     @Rule public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class);
 
-    @Inject GreetingGenerator mockGreetingGenerator;
+    private GreetingGenerator mockGreetingGenerator;
 
     @Before public void setUp() {
         DaggerOverridesApp app = (DaggerOverridesApp) InstrumentationRegistry.getTargetContext().getApplicationContext();
-        app.graph().inject(this);
+        mockGreetingGenerator = app.graph().get(GreetingGenerator.class);
     }
 
     @Test public void shouldGenerateCorrectGreeting() {

@@ -16,20 +16,22 @@
 
 package me.egorand.daggeroverrides.di.module;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import me.egorand.daggeroverrides.model.GreetingGenerator;
-import me.egorand.daggeroverrides.test.GreetingTest;
-import me.egorand.daggeroverrides.ui.activity.MainActivity;
 
 import static org.mockito.Mockito.mock;
 
-@Module(injects = {MainActivity.class, GreetingTest.class})
+@Module(injects = GreetingGenerator.class)
 public class MockGreetingModule {
 
-    @Provides @Singleton GreetingGenerator provideGreetingGenerator() {
-        return mock(GreetingGenerator.class);
+    private final GreetingGenerator mockGreetingGenerator;
+
+    public MockGreetingModule() {
+        this.mockGreetingGenerator = mock(GreetingGenerator.class);
+    }
+
+    @Provides GreetingGenerator provideGreetingGenerator() {
+        return mockGreetingGenerator;
     }
 }

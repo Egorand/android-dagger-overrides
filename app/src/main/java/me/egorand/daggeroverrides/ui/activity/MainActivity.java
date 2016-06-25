@@ -22,15 +22,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import javax.inject.Inject;
-
+import dagger.ObjectGraph;
 import me.egorand.daggeroverrides.DaggerOverridesApp;
 import me.egorand.daggeroverrides.R;
 import me.egorand.daggeroverrides.model.GreetingGenerator;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Inject GreetingGenerator greetingGenerator;
+    private GreetingGenerator greetingGenerator;
 
     private EditText nameInput;
     private TextView console;
@@ -38,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((DaggerOverridesApp) getApplication()).graph().inject(this);
+        ObjectGraph graph = ((DaggerOverridesApp) getApplication()).graph();
+        greetingGenerator = graph.get(GreetingGenerator.class);
 
         setContentView(R.layout.activity_main);
 
