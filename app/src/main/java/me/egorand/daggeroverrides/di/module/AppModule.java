@@ -23,7 +23,7 @@ import dagger.Provides;
 import me.egorand.daggeroverrides.DaggerOverridesApp;
 import me.egorand.daggeroverrides.di.qualifier.AppScope;
 
-@Module(library = true)
+@Module
 public class AppModule {
 
     private final DaggerOverridesApp app;

@@ -20,7 +20,8 @@ buildscript {
         android_apt_version = '1.8'
 
         appcompat_version = '24.0.0'
-        dagger_version = '1.2.5'
+        dagger_version = '2.5'
+        javax_version = '10.0-b28'
 
         espresso_version = '2.2.2'
         runner_version = '0.5'

@@ -16,23 +16,35 @@
 
 package me.egorand.daggeroverrides;
 
-import dagger.ObjectGraph;
+import me.egorand.daggeroverrides.di.component.AppComponent;
+import me.egorand.daggeroverrides.di.component.DaggerAppComponent;
+import me.egorand.daggeroverrides.di.component.DaggerMockGreetingComponent;
+import me.egorand.daggeroverrides.di.component.MockGreetingComponent;
 import me.egorand.daggeroverrides.di.module.AppModule;
 import me.egorand.daggeroverrides.di.module.MockGreetingModule;
 
 public class TestDaggerOverridesApp extends DaggerOverridesApp {
 
-    private ObjectGraph graph;
+    private MockGreetingComponent mockGreetingComponent;
+    private AppComponent appComponent;
 
     @Override public void onCreate() {
         super.onCreate();
 
-        graph = ObjectGraph.create(
-                new AppModule(this),
-                new MockGreetingModule());
+        mockGreetingComponent = DaggerMockGreetingComponent.builder()
+                .mockGreetingModule(new MockGreetingModule())
+                .build();
+        appComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
+                .greetingComponent(mockGreetingComponent)
+                .build();
     }
 
-    @Override public ObjectGraph graph() {
-        return graph;
+    @Override public AppComponent appComponent() {
+        return appComponent;
+    }
+
+    @Override public MockGreetingComponent greetingComponent() {
+        return mockGreetingComponent;
     }
 }

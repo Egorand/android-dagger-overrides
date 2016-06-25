@@ -18,23 +18,35 @@ package me.egorand.daggeroverrides;
 
 import android.app.Application;
 
-import dagger.ObjectGraph;
+import me.egorand.daggeroverrides.di.component.AppComponent;
+import me.egorand.daggeroverrides.di.component.DaggerAppComponent;
+import me.egorand.daggeroverrides.di.component.DaggerGreetingComponent;
+import me.egorand.daggeroverrides.di.component.GreetingComponent;
 import me.egorand.daggeroverrides.di.module.AppModule;
 import me.egorand.daggeroverrides.di.module.GreetingModule;
 
 public class DaggerOverridesApp extends Application {
 
-    private ObjectGraph graph;
+    private GreetingComponent greetingComponent;
+    private AppComponent appComponent;
 
     @Override public void onCreate() {
         super.onCreate();
 
-        graph = ObjectGraph.create(
-                new AppModule(this),
-                new GreetingModule());
+        greetingComponent = DaggerGreetingComponent.builder()
+                .greetingModule(new GreetingModule())
+                .build();
+        appComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
+                .greetingComponent(greetingComponent)
+                .build();
     }
 
-    public ObjectGraph graph() {
-        return graph;
+    public GreetingComponent greetingComponent() {
+        return greetingComponent;
+    }
+
+    public AppComponent appComponent() {
+        return appComponent;
     }
 }

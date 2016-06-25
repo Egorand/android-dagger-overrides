@@ -14,17 +14,11 @@
  * limitations under the License.
  */
 
-package me.egorand.daggeroverrides.di.module;
+package me.egorand.daggeroverrides.di.component;
 
-import dagger.Module;
-import dagger.Provides;
-import me.egorand.daggeroverrides.model.GreetingGenerator;
-import me.egorand.daggeroverrides.model.HelloGreetingGenerator;
+import dagger.Component;
+import me.egorand.daggeroverrides.di.module.MockGreetingModule;
 
-@Module
-public class GreetingModule {
-
-    @Provides GreetingGenerator provideGreetingGenerator() {
-        return new HelloGreetingGenerator();
-    }
+@Component(modules = MockGreetingModule.class)
+public interface MockGreetingComponent extends GreetingComponent {
 }

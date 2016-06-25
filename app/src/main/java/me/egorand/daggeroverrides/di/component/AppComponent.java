@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package me.egorand.daggeroverrides.di.module;
+package me.egorand.daggeroverrides.di.component;
 
-import dagger.Module;
-import dagger.Provides;
-import me.egorand.daggeroverrides.model.GreetingGenerator;
-import me.egorand.daggeroverrides.model.HelloGreetingGenerator;
+import android.content.Context;
 
-@Module
-public class GreetingModule {
+import dagger.Component;
+import me.egorand.daggeroverrides.di.module.AppModule;
+import me.egorand.daggeroverrides.di.qualifier.AppScope;
 
-    @Provides GreetingGenerator provideGreetingGenerator() {
-        return new HelloGreetingGenerator();
-    }
+@AppScope
+@Component(modules = AppModule.class, dependencies = GreetingComponent.class)
+public interface AppComponent {
+
+    @AppScope Context appContext();
 }

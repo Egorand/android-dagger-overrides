@@ -39,8 +39,9 @@ android {
 dependencies {
     compile "com.android.support:appcompat-v7:$appcompat_version"
 
-    compile "com.squareup.dagger:dagger:$dagger_version"
-    apt "com.squareup.dagger:dagger-compiler:$dagger_version"
+    compile "com.google.dagger:dagger:$dagger_version"
+    apt "com.google.dagger:dagger-compiler:$dagger_version"
+    provided "org.glassfish:javax.annotation:$javax_version"
 
     androidTestCompile "com.android.support.test.espresso:espresso-core:$espresso_version"
     androidTestCompile "com.android.support.test:runner:$runner_version"
@@ -48,5 +49,5 @@ dependencies {
     androidTestCompile "org.mockito:mockito-core:$mockito_version"
     androidTestCompile "com.google.dexmaker:dexmaker:$dexmaker_version"
     androidTestCompile "com.google.dexmaker:dexmaker-mockito:$dexmaker_version"
-    androidTestApt "com.squareup.dagger:dagger-compiler:$dagger_version"
+    androidTestApt "com.google.dagger:dagger-compiler:$dagger_version"
 }
