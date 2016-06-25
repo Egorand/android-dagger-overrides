@@ -1,14 +1,22 @@
 buildscript {
     ext {
+        gradle_plugin_version = '2.2.0-alpha3'
+        android_apt_version = '1.8'
+
         appcompat_version = '24.0.0'
+        dagger_version = '1.2.5'
+
         espresso_version = '2.2.2'
         runner_version = '0.5'
+        mockito_version = '1.10.19'
+        dexmaker_version = '1.2'
     }
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0-alpha3'
+        classpath "com.android.tools.build:gradle:$gradle_plugin_version"
+        classpath "com.neenbedankt.gradle.plugins:android-apt:$android_apt_version"
     }
 }
 

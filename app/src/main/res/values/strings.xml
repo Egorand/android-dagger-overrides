@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Dagger Overrides</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="greet">Greet</string>
 </resources>
