@@ -1,0 +1,23 @@
+buildscript {
+    ext {
+        appcompat_version = '24.0.0'
+        espresso_version = '2.2.2'
+        runner_version = '0.5'
+    }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.0-alpha3'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
