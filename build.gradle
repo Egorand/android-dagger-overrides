@@ -32,7 +32,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$gradle_plugin_version"
+        classpath 'com.android.tools.build:gradle:2.2.0-alpha4'
         classpath "com.neenbedankt.gradle.plugins:android-apt:$android_apt_version"
     }
 }
