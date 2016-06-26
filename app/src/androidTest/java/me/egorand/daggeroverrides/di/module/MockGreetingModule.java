@@ -22,7 +22,7 @@ import me.egorand.daggeroverrides.model.GreetingGenerator;
 
 import static org.mockito.Mockito.mock;
 
-@Module(injects = GreetingGenerator.class)
+@Module(injects = GreetingGenerator.class, overrides = true)
 public class MockGreetingModule {
 
     private final GreetingGenerator mockGreetingGenerator;

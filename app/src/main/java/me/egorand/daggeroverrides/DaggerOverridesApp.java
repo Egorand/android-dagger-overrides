@@ -20,7 +20,6 @@ import android.app.Application;
 
 import dagger.ObjectGraph;
 import me.egorand.daggeroverrides.di.module.AppModule;
-import me.egorand.daggeroverrides.di.module.GreetingModule;
 
 public class DaggerOverridesApp extends Application {
 
@@ -29,9 +28,7 @@ public class DaggerOverridesApp extends Application {
     @Override public void onCreate() {
         super.onCreate();
 
-        graph = ObjectGraph.create(
-                new AppModule(this),
-                new GreetingModule());
+        graph = ObjectGraph.create(new AppModule(this));
     }
 
     public ObjectGraph graph() {
