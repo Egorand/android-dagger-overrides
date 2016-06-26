@@ -24,7 +24,7 @@ import android.widget.TextView;
 
 import me.egorand.daggeroverrides.DaggerOverridesApp;
 import me.egorand.daggeroverrides.R;
-import me.egorand.daggeroverrides.di.component.GreetingComponent;
+import me.egorand.daggeroverrides.di.component.AppComponent;
 import me.egorand.daggeroverrides.model.GreetingGenerator;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        GreetingComponent component = ((DaggerOverridesApp) getApplication()).greetingComponent();
+        AppComponent component = ((DaggerOverridesApp) getApplication()).appComponent();
         greetingGenerator = component.greetingGenerator();
 
         setContentView(R.layout.activity_main);

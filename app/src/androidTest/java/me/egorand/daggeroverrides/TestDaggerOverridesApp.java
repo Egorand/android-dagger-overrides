@@ -18,33 +18,31 @@ package me.egorand.daggeroverrides;
 
 import me.egorand.daggeroverrides.di.component.AppComponent;
 import me.egorand.daggeroverrides.di.component.DaggerAppComponent;
-import me.egorand.daggeroverrides.di.component.DaggerMockGreetingComponent;
-import me.egorand.daggeroverrides.di.component.MockGreetingComponent;
 import me.egorand.daggeroverrides.di.module.AppModule;
-import me.egorand.daggeroverrides.di.module.MockGreetingModule;
+import me.egorand.daggeroverrides.model.GreetingGenerator;
+
+import static org.mockito.Mockito.mock;
 
 public class TestDaggerOverridesApp extends DaggerOverridesApp {
 
-    private MockGreetingComponent mockGreetingComponent;
     private AppComponent appComponent;
 
     @Override public void onCreate() {
         super.onCreate();
 
-        mockGreetingComponent = DaggerMockGreetingComponent.builder()
-                .mockGreetingModule(new MockGreetingModule())
-                .build();
         appComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(this))
-                .greetingComponent(mockGreetingComponent)
+                .appModule(new AppModule(this) {
+
+                    final GreetingGenerator mockGreetingGenerator = mock(GreetingGenerator.class);
+
+                    @Override public GreetingGenerator provideGreetingGenerator() {
+                        return mockGreetingGenerator;
+                    }
+                })
                 .build();
     }
 
     @Override public AppComponent appComponent() {
         return appComponent;
-    }
-
-    @Override public MockGreetingComponent greetingComponent() {
-        return mockGreetingComponent;
     }
 }

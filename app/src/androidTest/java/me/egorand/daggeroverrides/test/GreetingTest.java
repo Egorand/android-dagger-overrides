@@ -48,7 +48,7 @@ public class GreetingTest {
     @Before public void setUp() {
         DaggerOverridesApp app = (DaggerOverridesApp) InstrumentationRegistry.getTargetContext()
                 .getApplicationContext();
-        mockGreetingGenerator = app.greetingComponent().greetingGenerator();
+        mockGreetingGenerator = app.appComponent().greetingGenerator();
     }
 
     @Test public void shouldGenerateCorrectGreeting() {

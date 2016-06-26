@@ -21,10 +21,13 @@ import android.content.Context;
 import dagger.Component;
 import me.egorand.daggeroverrides.di.module.AppModule;
 import me.egorand.daggeroverrides.di.qualifier.AppScope;
+import me.egorand.daggeroverrides.model.GreetingGenerator;
 
 @AppScope
-@Component(modules = AppModule.class, dependencies = GreetingComponent.class)
+@Component(modules = {AppModule.class})
 public interface AppComponent {
 
     @AppScope Context appContext();
+
+    GreetingGenerator greetingGenerator();
 }

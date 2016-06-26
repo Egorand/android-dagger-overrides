@@ -22,6 +22,8 @@ import dagger.Module;
 import dagger.Provides;
 import me.egorand.daggeroverrides.DaggerOverridesApp;
 import me.egorand.daggeroverrides.di.qualifier.AppScope;
+import me.egorand.daggeroverrides.model.GreetingGenerator;
+import me.egorand.daggeroverrides.model.HelloGreetingGenerator;
 
 @Module
 public class AppModule {
@@ -34,5 +36,9 @@ public class AppModule {
 
     @Provides @AppScope Context provideAppContext() {
         return app;
+    }
+
+    @Provides public GreetingGenerator provideGreetingGenerator() {
+        return new HelloGreetingGenerator();
     }
 }
