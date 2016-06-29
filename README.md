@@ -1,6 +1,7 @@
 # android-dagger-overrides
 
 An example of configuring Dagger modules to provide test doubles.
+Check [Providing test doubles with Dagger 1 and Dagger 2](http://blog.egorand.me/providing-test-doubles-with-dagger-1-and-dagger-2/).
 
 This repo contains the following branches:
 
